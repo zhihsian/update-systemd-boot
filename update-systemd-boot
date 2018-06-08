@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+cp /vmlinuz /boot/efi/debian/vmlinuz
+cp /initrd.img /boot/efi/debian/initrd.img
