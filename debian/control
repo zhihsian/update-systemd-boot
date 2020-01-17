@@ -1,0 +1,19 @@
+Source: update-systemd-boot
+Section: utils
+Priority: optional
+Maintainer: Zhihsian Que <i@zhihsian.me>
+Build-Depends:
+ debhelper-compat (= 12),
+Standards-Version: 4.4.0
+Homepage: https://github.com/zhihsian/update-systemd-boot
+Vcs-Git: https://github.com/zhihsian/update-systemd-boot.git
+Vcs-Browser: https://github.com/zhihsian/update-systemd-boot
+
+Package: update-systemd-boot
+Architecture: all
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Description: Script to copy kernel files to systemd-boot directory.
+ Script to copy kernel files to systemd-boot directory after
+ kernel updates.

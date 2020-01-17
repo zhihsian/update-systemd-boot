@@ -1,0 +1,70 @@
+#!/bin/sh
+
+set -e
+
+get_root_dev() {
+  cat /etc/fstab | while read -r line; do
+    case "$line" in
+      "#"*)
+        :
+      ;;
+      *)
+        set -f
+        set -- $line
+        set +f
+        if [ "$2" = "/" ]; then
+          echo $1
+          return
+        fi
+      ;;
+    esac
+  done
+}
+
+machine_id=$(cat /etc/machine-id)
+description=$(lsb_release -ds)
+codename=$(lsb_release -cs)
+root_dev=$(get_root_dev)
+options='quiet splash'
+
+entries_dir='/boot/efi/loader/entries'
+dest_dir="/boot/efi/$machine_id"
+
+if [ -z "$root_dev" ]; then
+  exit 1
+fi
+
+mkdir -p "$dest_dir"
+
+for file in $entries_dir/$machine_id-*.conf; do
+  tmp=${file#"$entries_dir/$machine_id-"}
+  version=${tmp%".conf"}
+
+  if [ ! -f /boot/vmlinuz-$version ]; then
+    rm -f $entries_dir/$machine_id-$version.conf
+    rm -f $dest_dir/vmlinuz-$version
+    rm -f $dest_dir/initrd.img-$version
+  fi
+done
+
+for file in /boot/vmlinuz-*; do
+  version=${file#"/boot/vmlinuz-"}
+
+  if [ ! -f /boot/initrd.img-$version ]; then
+    continue
+  fi
+
+  content=$(cat << EOF
+title      $description
+version    $version
+machine-id $machine_id
+linux      /$machine_id/vmlinuz-$version
+initrd     /$machine_id/initrd.img-$version
+options    root=$root_dev ro $options
+EOF
+)
+
+  echo "$content" > "$entries_dir/$machine_id-$version.conf"
+  cp -u "/boot/vmlinuz-$version" "$dest_dir/"
+  cp -u "/boot/initrd.img-$version" "$dest_dir/"
+done

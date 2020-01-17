@@ -1,0 +1,5 @@
+update-systemd-boot (1.0.0) unstable; urgency=medium
+
+  * Initial Release.
+
+ -- Zhihsian Que <i@zhihsian.me>  Thu, 10 Oct 2019 15:55:01 +0800
