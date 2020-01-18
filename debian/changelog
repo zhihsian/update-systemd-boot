@@ -1,5 +1,11 @@
+update-systemd-boot (1.1.0) unstable; urgency=medium
+
+  * Run at kernel postrm
+
+ -- zsien <i@zsien.cn>  Sat, 18 Jan 2020 12:02:23 +0800
+
 update-systemd-boot (1.0.0) unstable; urgency=medium
 
   * Initial Release.
 
- -- Zhihsian Que <i@zhihsian.me>  Thu, 10 Oct 2019 15:55:01 +0800
+ -- zsien <i@zsien.cn>  Thu, 10 Oct 2019 15:55:01 +0800

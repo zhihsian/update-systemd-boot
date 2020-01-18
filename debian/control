@@ -1,13 +1,13 @@
 Source: update-systemd-boot
 Section: utils
 Priority: optional
-Maintainer: Zhihsian Que <i@zhihsian.me>
+Maintainer: zsien <i@zsien.cn>
 Build-Depends:
  debhelper-compat (= 12),
 Standards-Version: 4.4.0
-Homepage: https://github.com/zhihsian/update-systemd-boot
-Vcs-Git: https://github.com/zhihsian/update-systemd-boot.git
-Vcs-Browser: https://github.com/zhihsian/update-systemd-boot
+Homepage: https://github.com/zsien/update-systemd-boot
+Vcs-Git: https://github.com/zsien/update-systemd-boot.git
+Vcs-Browser: https://github.com/zsien/update-systemd-boot
 
 Package: update-systemd-boot
 Architecture: all

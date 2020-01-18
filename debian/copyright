@@ -1,9 +1,9 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: update-systemd-boot
-Source: https://github.com/zhihsian/update-systemd-boot
+Source: https://github.com/zsien/update-systemd-boot
 
 Files: *
-Copyright: 2018 Zhihsian Que <i@zhihsian.me>
+Copyright: 2018 zsien <i@zsien.cn>
 License: MIT
 
 License: MIT
